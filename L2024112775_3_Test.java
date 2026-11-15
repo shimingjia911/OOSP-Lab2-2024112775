@@ -64,6 +64,18 @@ class L2024112775_3_Test {
     }
 
     /**
+     * 测试目的：验证两个元素不存在整除关系时的边界情况。
+     * 测试用例：nums = [4, 9]，期望结果长度为 1。
+     */
+    @Test
+    void testTwoElementsNoDivisiblePair() {
+        int[] nums = {4, 9};
+        List<Integer> result = new Solution3().largestDivisibleSubset(nums);
+
+        assertValidDivisibleSubset(nums, result, 1);
+    }
+
+    /**
      * 测试目的：验证不存在整除关系时返回任意一个单元素子集。
      * 测试用例：nums = [2, 3, 5, 7]。
      */
@@ -76,8 +88,9 @@ class L2024112775_3_Test {
     }
 
     /**
-     * 测试目的：验证较大整数不会产生溢出，并确认长度为 1 的输入不会越界。
+     * 测试目的：验证较大整数不会导致计算错误。
      * 测试用例：[1000000000, 500000000, 250000000]。
+     * 期望结果：[250000000, 500000000, 1000000000]。
      */
     @Test
     void testLargeValues() {
@@ -88,7 +101,8 @@ class L2024112775_3_Test {
     }
 
     /**
-     * 校验返回结果确为输入中的元素、数量正确、无重复，且任意两元素互相整除。
+     * 校验返回结果确为输入中的元素、数量正确、无重复，
+     * 且任意两元素互相整除。
      */
     private void assertValidDivisibleSubset(
             int[] nums,
